@@ -31,15 +31,14 @@ int get_input_int(int num) {
             }
         } else if(buffer[11] == '\n') {
             printerror(buffer);
-        } else {
-            buffer[strcspn(buffer, "\n")] = '\0';
-            temp = strtol(buffer, NULL, 10);
-            if(temp > INT_MIN || temp < INT_MAX) {
-                num = temp;
-                break;
-            }
-            printf("int型の最大値または最小値を超えています。入力しなおしてください。");
         }
+        buffer[strcspn(buffer, "\n")] = '\0';
+        temp = strtol(buffer, NULL, 10);
+        if(temp > INT_MIN || temp < INT_MAX) {
+            num = temp;
+            break;
+        }
+        printf("int型の最大値または最小値を超えています。入力しなおしてください。");
     }
     return num;
 }
