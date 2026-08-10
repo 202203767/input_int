@@ -4,7 +4,7 @@
 #include <stdlib.h>
 //#include "input_int.h"
 
-#define MAX_BUFFER (12 + 1)
+#define MAX_BUFFER (10 + 1 + 1)
 
 void printerror(char buffer[]) {
     int input_char_code = 0;
