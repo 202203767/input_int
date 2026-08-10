@@ -30,7 +30,7 @@ int get_input_int(int num) {
                 printerror(buffer);
             }
         } else if(buffer[11] == '\n') {
-            
+            printerror(buffer);
         } else {
             buffer[strcspn(buffer, "\n")] = '\0';
             temp = strtol(buffer, NULL, 10);
