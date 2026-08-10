@@ -20,7 +20,6 @@ int get_input_int(int num) {
     while(1) {
         printf("数字を入力してください：");
         fgets(buffer, sizeof(buffer), stdin);
-        printf("%s\n", buffer);
         if(buffer[0] == '\n') {
             printerror(buffer);
         } else if(strchr(buffer, '\n') == NULL) {
@@ -34,11 +33,11 @@ int get_input_int(int num) {
         }
         buffer[strcspn(buffer, "\n")] = '\0';
         temp = strtol(buffer, NULL, 10);
-        if(temp > INT_MIN || temp < INT_MAX) {
+        if(temp > INT_MIN && temp < INT_MAX) {
             num = temp;
             break;
         }
-        printf("int型の最大値または最小値を超えています。入力しなおしてください。");
+        printf("int型の最大値または最小値を超えています。入力しなおしてください。\n");
     }
     return num;
 }
