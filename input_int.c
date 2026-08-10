@@ -6,19 +6,31 @@
 
 #define MAX_BUFFER (12 + 1)
 
-int get_input_int(int num) {
+void printerror(char buffer[]) {
     int input_char_code = 0;
+    printf("未入力または10桁を超えています。もう一度入力してください。\n");
+    if(strchr(buffer, '\n') == NULL) {
+        while ((input_char_code = getchar()) != '\n' && input_char_code != EOF);
+    }
+}
+
+int get_input_int(int num) {
     long temp = 0;
     char buffer[MAX_BUFFER];
     while(1) {
         printf("数字を入力してください：");
         fgets(buffer, sizeof(buffer), stdin);
         printf("%s\n", buffer);
-        if (strchr(buffer, '\n') == NULL || buffer[0] == '\n') {
-            printf("未入力または%d桁を超えています。もう一度入力してください。\n", MAX_BUFFER - 1);
-            if(strchr(buffer, '\n') == NULL) {
-                while ((input_char_code = getchar()) != '\n' && input_char_code != EOF);
+        if(buffer[0] == '\n') {
+            printerror(buffer);
+        } else if(strchr(buffer, '\n') == NULL) {
+            printerror(buffer);
+        } else if(buffer[0] == '-') {
+            if(buffer[12] == '\n') {
+                printerror(buffer);
             }
+        } else if(buffer[11] == '\n') {
+            
         } else {
             buffer[strcspn(buffer, "\n")] = '\0';
             temp = strtol(buffer, NULL, 10);
