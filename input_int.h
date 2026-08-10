@@ -2,6 +2,6 @@
 #define INPUT_H
 #include <stddef.h>
 
-int get_input_int(char input_char[], size_t max_buffer);
+int get_input_int(int num);
 
 #endif
