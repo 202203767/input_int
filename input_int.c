@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <string.h>
 #include <stdlib.h>
-//#include "input_int.h"
+#include "input_int.h"
 
 #define MAX_BUFFER (10 + 1 + 1)
 
