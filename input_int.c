@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "input_int.h"
 
-#define MAX_BUFFER (10 + 1 + 1)
+#define MAX_BUFFER (10 + 1 + 1 + 1)
 
 void printerror(char buffer[]) {
     int input_char_code = 0;
@@ -23,7 +23,7 @@ int get_input_int(int num) {
         printf("数字を入力してください：");
         fgets(buffer, sizeof(buffer), stdin);
         if(buffer[0] == '-') {
-            if(buffer[13] == '\n') {
+            if(strchr(buffer, '\n') == NULL || buffer[13] == '\n') {
                 printerror(buffer);
                 continue;
             }
