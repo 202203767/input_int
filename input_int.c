@@ -15,29 +15,40 @@ void printerror(char buffer[]) {
 }
 
 int get_input_int(int num) {
-    long temp = 0;
     char buffer[MAX_BUFFER];
+    char *endptr;
+    long temp = 0;
+    int input_char_code;
     while(1) {
         printf("数字を入力してください：");
         fgets(buffer, sizeof(buffer), stdin);
-        if(buffer[0] == '\n') {
-            printerror(buffer);
-        } else if(strchr(buffer, '\n') == NULL) {
-            printerror(buffer);
-        } else if(buffer[0] == '-') {
-            if(buffer[12] == '\n') {
+        if(buffer[0] == '-') {
+            if(buffer[13] == '\n') {
                 printerror(buffer);
+                continue;
             }
-        } else if(buffer[11] == '\n') {
+        }else if(strchr(buffer, '\n') == NULL || buffer[0] == '\n') {
             printerror(buffer);
+            continue;
         }
         buffer[strcspn(buffer, "\n")] = '\0';
-        temp = strtol(buffer, NULL, 10);
-        if(temp > INT_MIN && temp < INT_MAX) {
-            num = temp;
-            break;
+        temp = strtol(buffer, &endptr, 10);
+        if (*endptr != '\0') {
+            printf("文字が入っています整数を入力してください。\n");
+            continue;
         }
-        printf("int型の最大値または最小値を超えています。入力しなおしてください。\n");
+        if (temp < INT_MIN || temp > INT_MAX) {
+            printf("int型の範囲外です。入力しなおしてください。\n");
+            continue;
+        }
+        num = temp;
+        return num;
     }
-    return num;
+}
+
+int main() {
+    int num;
+    num = get_input_int(num);
+    printf("%d\n", num);
+    return 0;
 }
