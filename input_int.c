@@ -45,10 +45,3 @@ int get_input_int(int num) {
         return num;
     }
 }
-
-int main() {
-    int num;
-    num = get_input_int(num);
-    printf("%d\n", num);
-    return 0;
-}
