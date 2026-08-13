@@ -14,10 +14,11 @@ void printerror(char buffer[]) {
     }
 }
 
-int get_input_int(int num) {
+int get_input_int() {
     char buffer[MAX_BUFFER];
     char *endptr;
     long temp = 0;
+    int num = 0;
     int input_char_code;
     while(1) {
         printf("数字を入力してください：");
@@ -27,7 +28,7 @@ int get_input_int(int num) {
                 printerror(buffer);
                 continue;
             }
-        }else if(strchr(buffer, '\n') == NULL || buffer[0] == '\n') {
+        }else if(strchr(buffer, '\n') == NULL || buffer[0] == '\n' || buffer[11] == '\n') {
             printerror(buffer);
             continue;
         }
