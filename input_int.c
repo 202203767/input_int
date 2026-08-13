@@ -21,7 +21,6 @@ int get_input_int() {
     int num = 0;
     int input_char_code;
     while(1) {
-        printf("数字を入力してください：");
         fgets(buffer, sizeof(buffer), stdin);
         if(buffer[0] == '-') {
             if(strchr(buffer, '\n') == NULL || buffer[13] == '\n') {
