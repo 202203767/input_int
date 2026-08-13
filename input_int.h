@@ -2,6 +2,6 @@
 #define INPUT_H
 #include <stddef.h>
 
-int get_input_int(int num);
+int get_input_int();
 
 #endif
